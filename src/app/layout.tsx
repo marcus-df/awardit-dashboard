@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
 import { ThemeProvider } from "@/components/theme-provider";
+import Header from "@/components/sections/header";
 import { Geist, Geist_Mono } from "next/font/google";
 import FooterSection from "@/components/sections/footer";
 import "./globals.css";
@@ -39,9 +40,10 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <SidebarProvider>
+            <SidebarProvider defaultOpen={false}>
               <AppSidebar />
               <main className="w-full p-2 flex flex-col">
+                <Header />
                 <div className="flex-grow">
                   <SidebarTrigger />
                   {children}
