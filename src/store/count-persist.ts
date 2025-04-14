@@ -15,7 +15,8 @@ export const useCounterStore = create<CounterStore>()(
   }), 
   { 
     name: "count-persist",
-    storage: createJSONStorage(() => localStorage)
+    storage: createJSONStorage(() => localStorage),
+    partialize: (state) => ({ count: state.count })
   }
   ),
 );
