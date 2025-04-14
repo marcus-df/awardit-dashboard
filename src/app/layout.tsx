@@ -41,9 +41,11 @@ export default function RootLayout({
           >
             <SidebarProvider>
               <AppSidebar />
-              <main className="w-full p-2">
-                <SidebarTrigger />
-                {children}
+              <main className="w-full p-2 flex flex-col">
+                <div className="flex-grow">
+                  <SidebarTrigger />
+                  {children}
+                </div>
                 <FooterSection />
               </main>
             </SidebarProvider>
