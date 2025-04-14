@@ -41,7 +41,7 @@ export default function RootLayout({
           >
             <SidebarProvider>
               <AppSidebar />
-              <main className="w-full">
+              <main className="w-full p-2">
                 <SidebarTrigger />
                 {children}
                 <FooterSection />

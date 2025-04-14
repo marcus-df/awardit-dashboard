@@ -1,9 +1,11 @@
-
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function About() {
   return (
-    <div>
-      <h1>About</h1>
-    </div>
+    <Card className="m-1 mt-3">
+      <CardContent>
+        <p>About</p>
+      </CardContent>
+    </Card>
   );
 }
