@@ -1,3 +1,7 @@
+/**
+ * Demo/example file for how to structure state with zustand.
+ */
+
 import { create } from "zustand";
 
 type CounterStore = {

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
-import { AppSidebar } from "@/components/app-sidebar"
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/app-sidebar";
 import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/sections/header";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -32,7 +32,7 @@ export default function RootLayout({
       <html lang="en" suppressHydrationWarning>
         <head />
         <body
-         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           <ThemeProvider
             attribute="class"
@@ -43,9 +43,12 @@ export default function RootLayout({
             <SidebarProvider defaultOpen={false}>
               <AppSidebar />
               <main className="w-full p-2 flex flex-col">
-                {/* <Header /> */}
+                
                 <div className="flex-grow">
-                  <SidebarTrigger />
+                  <div className="flex items-center">
+                    <SidebarTrigger />
+                    <Header />
+                  </div>
                   {children}
                 </div>
                 <FooterSection />

@@ -27,7 +27,7 @@ const baseLinks = [
   },
   {
     title: "Settings",
-    url: "#",
+    url: "/settings",
     icon: Settings,
   },
 ];
