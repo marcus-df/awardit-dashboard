@@ -1,6 +1,6 @@
-import type { LinkFieldItem, LinkFieldProps } from "@/types";
+import type { LinkFieldItem } from "@/types";
 
-import React, { Fragment } from "react";
+import React from "react";
 import { ExternalLink } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
