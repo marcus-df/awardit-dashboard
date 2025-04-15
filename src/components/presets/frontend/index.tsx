@@ -7,7 +7,6 @@ import { LinkAddSubmitComponent } from "@/components/link-field/link-add-submit"
 export function FrontendPreset() {
   const magentoArr = useMagentoListStore((state) => state.list);
   const addMagentoItem = useMagentoListStore((state) => state.add);
-  const deleteMagentoItem = useMagentoListStore((state) => state.delete);
   const awarditAdminArr = useAwarditAdminListStore((state) => state.list);
   const addAwarditAdminItem = useAwarditAdminListStore((state) => state.add);
   const atlassianArr = useAtlassianListStore((state) => state.list);
