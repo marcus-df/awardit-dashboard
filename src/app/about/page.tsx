@@ -16,20 +16,20 @@ import { useCounterStore } from "@/store/count-persist";
 export default function About() {
   // Calling Zustand inside of react function (with hook)
   const count = useCounterStore((state) => state.count);
-  const increment =  useCounterStore((state) => state.increment)
-  const decrement =  useCounterStore((state) => state.decrement)
+  const increment = useCounterStore((state) => state.increment);
+  const decrement = useCounterStore((state) => state.decrement);
 
   return (
     <>
-    <Card className="m-1 mt-3 w-64">
-      <CardContent>
-        Count: {count}
-        <div className="flex flex-col gap-2 mt-2">
-          <Button onClick={increment}>Increment</Button>
-          <Button onClick={decrement}>Decrement</Button>
-        </div>
-      </CardContent>
-    </Card>
+      <Card className="m-1 mt-3 w-64">
+        <CardContent>
+          Count: {count}
+          <div className="flex flex-col gap-2 mt-2">
+            <Button onClick={increment}>Increment</Button>
+            <Button onClick={decrement}>Decrement</Button>
+          </div>
+        </CardContent>
+      </Card>
     </>
   );
 }

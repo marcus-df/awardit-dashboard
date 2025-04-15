@@ -1,4 +1,4 @@
-import { LinkFieldOuter } from "@/components/field/link-field-outer";
+import { LinkFieldOuter } from "@/components/link-field/link-field-outer";
 import { magentoArray } from "@/data/list-magento";
 
 export function CustomerServicePreset() {

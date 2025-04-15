@@ -1,5 +1,5 @@
 import { ThemeToggle } from "@/components/theme-toggle";
-import { Home, Info, Settings } from "lucide-react";
+import { Home, Info, Settings, LayoutDashboard } from "lucide-react";
 
 import {
   Sidebar,
@@ -35,7 +35,20 @@ const baseLinks = [
 export function AppSidebar() {
   return (
     <Sidebar>
-      <SidebarHeader />
+      <SidebarHeader>
+        <SidebarMenuButton
+          size="lg"
+          className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+        >
+          <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+            <LayoutDashboard className="size-5" />
+          </div>
+          <div className="flex flex-col gap-0.5 leading-none">
+            <span className="font-semibold">Awardit Dashboard</span>
+            <span className="">v0.1.0</span>
+          </div>
+        </SidebarMenuButton>
+      </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>

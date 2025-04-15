@@ -41,7 +41,7 @@ const formSchema = z.object({
   external: z.boolean().optional(),
 });
 
-export function AddLinkSubmitComponent({
+export function LinkAddSubmitComponent({
   addItem,
 }: {
   addItem: (item: LinkFieldItem) => void;

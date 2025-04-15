@@ -2,7 +2,7 @@
 
 import { FrontendPreset } from "@/components/presets/frontend";
 import { BackendPreset } from "@/components/presets/backend";
-import { CustomerServicePreset } from "@/components/presets/customerService";
+import { CustomerServicePreset } from "@/components/presets/customer-service";
 
 interface Props {
   preset: string | null;

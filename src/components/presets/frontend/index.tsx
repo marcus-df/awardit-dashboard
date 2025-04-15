@@ -1,12 +1,13 @@
-import { LinkFieldOuter } from "@/components/field/link-field-outer";
+import { LinkFieldOuter } from "@/components/link-field/link-field-outer";
 import { useMagentoListStore } from "@/store/list-magento";
 import { useAwarditAdminListStore } from "@/store/list-awardit-admin";
 import { useAtlassianListStore } from "@/store/list-atlassian";
-import { AddLinkSubmitComponent } from "@/components/field/add-link-submit";
+import { LinkAddSubmitComponent } from "@/components/link-field/link-add-submit";
 
 export function FrontendPreset() {
   const magentoArr = useMagentoListStore((state) => state.list);
   const addMagentoItem = useMagentoListStore((state) => state.add);
+  const deleteMagentoItem = useMagentoListStore((state) => state.delete);
   const awarditAdminArr = useAwarditAdminListStore((state) => state.list);
   const addAwarditAdminItem = useAwarditAdminListStore((state) => state.add);
   const atlassianArr = useAtlassianListStore((state) => state.list);
@@ -17,17 +18,17 @@ export function FrontendPreset() {
       <LinkFieldOuter
         title="Magento"
         items={magentoArr}
-        submitComp={<AddLinkSubmitComponent addItem={addMagentoItem} />}
+        submitComp={<LinkAddSubmitComponent addItem={addMagentoItem} />}
       />
       <LinkFieldOuter
         title="Awardit admin"
         items={awarditAdminArr}
-        submitComp={<AddLinkSubmitComponent addItem={addAwarditAdminItem} />}
+        submitComp={<LinkAddSubmitComponent addItem={addAwarditAdminItem} />}
       />
       <LinkFieldOuter
         title="Atlassian"
         items={atlassianArr}
-        submitComp={<AddLinkSubmitComponent addItem={addAtlassianItem} />}
+        submitComp={<LinkAddSubmitComponent addItem={addAtlassianItem} />}
       />
     </div>
   )

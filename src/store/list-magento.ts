@@ -7,6 +7,7 @@ import { magentoArray } from "@/data/list-magento";
 type MagentoListStore = {
   list: LinkFieldItem[];
   add: (item: LinkFieldItem) => void;
+  delete: (name: string) => void;
 };
 
 export const useMagentoListStore = create<MagentoListStore>()(
@@ -14,6 +15,10 @@ export const useMagentoListStore = create<MagentoListStore>()(
     (set) => ({
       list: magentoArray,
       add: (item) => set((state) => ({ list: [...state.list, item] })),
+      delete: (name) =>
+        set((state) => ({
+          list: state.list.filter((item) => item.title !== name),
+        })),
     }),
     {
       name: "magento-list",

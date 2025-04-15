@@ -1,6 +1,6 @@
-import { LinkFieldOuter } from "@/components/field/link-field-outer";
+import { LinkFieldOuter } from "@/components/link-field/link-field-outer";
 import { useMagentoListStore } from "@/store/list-magento";
-import { AddLinkSubmitComponent } from "@/components/field/add-link-submit";
+import { LinkAddSubmitComponent } from "@/components/link-field/link-add-submit";
 
 export function BackendPreset() {
   const magentoArr = useMagentoListStore((state) => state.list);
@@ -11,7 +11,7 @@ export function BackendPreset() {
       <LinkFieldOuter
         title="Magento"
         items={magentoArr}
-        submitComp={<AddLinkSubmitComponent addItem={addItem} />}
+        submitComp={<LinkAddSubmitComponent addItem={addItem} />}
       />
     </div>
   );

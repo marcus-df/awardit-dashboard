@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic'
 import { usePresetStore } from "@/store/preset";
 
 const PresetSelector = dynamic(
-  () => import("@/components/presetSelector"),
+  () => import("@/components/preset-selector"),
   {
     loading: () => <SkeletonLoader />,
     ssr: false

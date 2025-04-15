@@ -1,5 +1,5 @@
 import { Breadcrumbs } from "@/components/breadcrumbs"
 
 export default function Header() {
-  return <Breadcrumbs />
+  return <div className="ml-2"><Breadcrumbs /></div>
 }
