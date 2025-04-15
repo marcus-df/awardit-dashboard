@@ -6,7 +6,10 @@ import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { toast } from "sonner"
 import { Plus } from "lucide-react";
 
 import {
@@ -26,8 +29,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-
-import { Input } from "@/components/ui/input";
 
 const formSchema = z.object({
   title: z.string().min(3, {
@@ -60,9 +61,15 @@ export function AddLinkSubmitComponent({
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values);
     addItem(values);
     setOpen(false);
+    toast("Item has been added to the list.", {
+      description: new Date().toLocaleString(),
+      action: {
+        label: "Undo",
+        onClick: () => console.log("Undo"),
+      },
+    })
   }
 
   return (
