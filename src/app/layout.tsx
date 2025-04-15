@@ -43,7 +43,6 @@ export default function RootLayout({
             <SidebarProvider defaultOpen={false}>
               <AppSidebar />
               <main className="w-full p-2 flex flex-col">
-                
                 <div className="flex-grow">
                   <div className="flex items-center">
                     <SidebarTrigger />
