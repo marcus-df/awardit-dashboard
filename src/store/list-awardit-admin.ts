@@ -7,13 +7,19 @@ import { awarditAdminArray } from "@/data/list-awardit-admin";
 type AwarditAdminListStore = {
   list: LinkFieldItem[];
   add: (item: LinkFieldItem) => void;
+  reset: () => void;
 };
+
+const initialState = {
+  list: awarditAdminArray
+}
 
 export const useAwarditAdminListStore = create<AwarditAdminListStore>()(
   persist(
     (set) => ({
-      list: awarditAdminArray,
+      ...initialState,
       add: (item) => set((state) => ({ list: [...state.list, item] })),
+      reset: () => set(initialState)
     }),
     {
       name: "awardit-admin-list",

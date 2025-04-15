@@ -8,17 +8,23 @@ type MagentoListStore = {
   list: LinkFieldItem[];
   add: (item: LinkFieldItem) => void;
   delete: (name: string) => void;
+  reset: () => void;
 };
+
+const initialState = {
+  list: magentoArray
+}
 
 export const useMagentoListStore = create<MagentoListStore>()(
   persist(
     (set) => ({
-      list: magentoArray,
+      ...initialState,
       add: (item) => set((state) => ({ list: [...state.list, item] })),
       delete: (name) =>
         set((state) => ({
           list: state.list.filter((item) => item.title !== name),
         })),
+      reset: () => set(initialState)
     }),
     {
       name: "magento-list",
