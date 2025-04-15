@@ -6,7 +6,7 @@ export interface LinkFieldItem {
 }
 
 export interface LinkFieldProps {
-  className: string;
+  className?: string;
   title: string;
   items: LinkFieldItem[];
   submitComp?: React.ReactNode;

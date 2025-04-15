@@ -1,4 +1,4 @@
-import type { LinkFieldItem, LinkFieldProps } from "@/types";
+import type { LinkFieldProps } from "@/types";
 
 import React from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";

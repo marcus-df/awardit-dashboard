@@ -1,5 +1,5 @@
-import { Badge } from "@/components/ui/badge"
+import { Breadcrumbs } from "@/components/breadcrumbs"
 
 export default function Header() {
-  return <Badge>Header</Badge>
+  return <Breadcrumbs />
 }
