@@ -6,16 +6,22 @@ type PresetStore = {
   selectPreset: boolean;
   setPreset: (preset: string) => void;
   setSelectPreset: () => void;
+  reset: () => void;
 };
+
+const initialState = {
+  preset: null,
+  selectPreset: false,
+}
 
 export const usePresetStore = create<PresetStore>()(
   persist((set) => ({
-    preset: null,
-    selectPreset: false,
+    ...initialState,
     setPreset: (preset) => {
       set(() => ({ preset: preset }));
     },
-    setSelectPreset: () => set((state) => ({ selectPreset: !state.selectPreset }))
+    setSelectPreset: () => set((state) => ({ selectPreset: !state.selectPreset })),
+    reset: () => set(initialState)
   }), 
   { 
     name: "preset",
