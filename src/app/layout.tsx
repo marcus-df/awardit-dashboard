@@ -40,7 +40,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <SidebarProvider defaultOpen={false}>
+            <SidebarProvider>
               <AppSidebar />
               <main className="w-full p-2 flex flex-col">
                 <div className="flex-grow">
