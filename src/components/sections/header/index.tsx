@@ -1,11 +1,19 @@
 "use client"
 
-import { Button } from "@/components/ui/button";
 import { useAwarditAdminListStore } from "@/store/list-awardit-admin";
 import { useAtlassianListStore } from "@/store/list-atlassian";
 import { useMagentoListStore } from "@/store/list-magento";
 import { usePresetStore } from "@/store/preset";
 import { usePathname } from "next/navigation";
+
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarShortcut,
+  MenubarTrigger,
+} from "@/components/ui/menubar"
 
 export default function Header() {
   const awarditAdminStore = useAwarditAdminListStore();
@@ -28,7 +36,21 @@ export default function Header() {
   return (
     <div className="ml-2">
       {presetStore && pathname === "/" && (
-        <Button variant="destructive" onClick={reset}>Remove settings</Button>
+        <Menubar>
+          <MenubarMenu>
+            <MenubarTrigger>Options</MenubarTrigger>
+            <MenubarContent align="end">
+              <MenubarItem onSelect={reset}>
+                Remove Settings
+                <MenubarShortcut>⌘K</MenubarShortcut>
+              </MenubarItem>
+              <MenubarItem>
+                Import Settings
+                <MenubarShortcut>⌘I</MenubarShortcut>
+              </MenubarItem>
+            </MenubarContent>
+          </MenubarMenu>
+        </Menubar>
       )}
     </div>
   )

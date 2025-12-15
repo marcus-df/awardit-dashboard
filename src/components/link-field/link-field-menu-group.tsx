@@ -10,7 +10,9 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner"
-import { Plus } from "lucide-react";
+import { Plus, MoreHorizontalIcon } from "lucide-react";
+
+import { ButtonGroup } from "@/components/ui/button-group"
 
 import {
   Dialog,
@@ -30,6 +32,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu";
+
 const formSchema = z.object({
   title: z.string().min(3, {
     message: "Username must be at least 3 characters.",
@@ -41,7 +45,7 @@ const formSchema = z.object({
   external: z.boolean().optional(),
 });
 
-export function LinkAddSubmitComponent({
+export function AddLinkComponent({
   addItem,
 }: {
   addItem: (item: LinkFieldItem) => void;
@@ -120,4 +124,42 @@ export function LinkAddSubmitComponent({
       </DialogContent>
     </Dialog>
   );
+}
+
+export function OtherOptionsMenu() {
+
+  const removeList = () => {
+    console.log("Remove List");
+  }
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" size="sm">
+          <MoreHorizontalIcon />
+        </Button>
+      </DropdownMenuTrigger>
+       <DropdownMenuContent align="end" className="w-52">
+        <DropdownMenuGroup>
+          <DropdownMenuItem onClick={() => removeList()}>Remove List</DropdownMenuItem>    
+        </DropdownMenuGroup>
+       </DropdownMenuContent>
+    </DropdownMenu>
+  )
+};
+
+export function LinkFieldMenuGroup({
+  addItem,
+}: {
+  addItem: (item: LinkFieldItem) => void;
+}) {
+  return (
+    <ButtonGroup
+      aria-label="List controls"
+      className="h-fit"
+    >
+      <OtherOptionsMenu />
+      <AddLinkComponent addItem={addItem} />
+    </ButtonGroup>
+  )
 }

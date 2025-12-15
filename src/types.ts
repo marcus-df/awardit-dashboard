@@ -9,5 +9,13 @@ export interface LinkFieldProps {
   className?: string;
   title: string;
   items: LinkFieldItem[];
-  submitComp?: React.ReactNode;
+  deleteItem: (title: string) => void;
+  menuComp?: React.ReactNode;
 }
+
+export interface LinkListStore {
+  list: LinkFieldItem[];
+  add: (item: LinkFieldItem) => void;
+  delete: (title: string) => void;
+  reset: () => void;
+};

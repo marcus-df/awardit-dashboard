@@ -1,33 +1,26 @@
-import type { LinkFieldItem } from "@/types";
+import type { LinkListStore } from "@/types";
 
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import { magentoArray } from "@/data/list-magento";
 
-type MagentoListStore = {
-  list: LinkFieldItem[];
-  add: (item: LinkFieldItem) => void;
-  delete: (name: string) => void;
-  reset: () => void;
+const initialState = {
+  list: magentoArray,
 };
 
-const initialState = {
-  list: magentoArray
-}
-
-export const useMagentoListStore = create<MagentoListStore>()(
+export const useMagentoListStore = create<LinkListStore>()(
   persist(
     (set) => ({
       ...initialState,
       add: (item) => set((state) => ({ list: [...state.list, item] })),
-      delete: (name) =>
+      delete: (title) =>
         set((state) => ({
-          list: state.list.filter((item) => item.title !== name),
+          list: state.list.filter((item) => item.title !== title),
         })),
-      reset: () => set(initialState)
+      reset: () => set(initialState),
     }),
     {
-      name: "magento-list",
+      name: "list-magento",
       storage: createJSONStorage(() => localStorage),
     }
   )

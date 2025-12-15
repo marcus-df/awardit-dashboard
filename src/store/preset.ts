@@ -12,21 +12,23 @@ type PresetStore = {
 const initialState = {
   preset: null,
   selectPreset: false,
-}
+};
 
 export const usePresetStore = create<PresetStore>()(
-  persist((set) => ({
-    ...initialState,
-    setPreset: (preset) => {
-      set(() => ({ preset: preset }));
-    },
-    setSelectPreset: () => set((state) => ({ selectPreset: !state.selectPreset })),
-    reset: () => set(initialState)
-  }), 
-  { 
-    name: "preset",
-    storage: createJSONStorage(() => localStorage),
-    partialize: (state) => ({ preset: state.preset })
-  }
-  ),
+  persist(
+    (set) => ({
+      ...initialState,
+      setPreset: (preset) => {
+        set(() => ({ preset: preset }));
+      },
+      setSelectPreset: () =>
+        set((state) => ({ selectPreset: !state.selectPreset })),
+      reset: () => set(initialState),
+    }),
+    {
+      name: "preset",
+      storage: createJSONStorage(() => localStorage),
+      partialize: (state) => ({ preset: state.preset }),
+    }
+  )
 );

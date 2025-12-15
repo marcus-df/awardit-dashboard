@@ -1,35 +1,17 @@
-"use client";
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { useCounterStore } from "@/store/count-persist";
-
-// Calling Zustand outside of react function (without hook)
-// const logCount = () => {
-//   // Getter
-//   const count = useCounterStore.getState().count;
-//   // Setter
-//   useCounterStore.setState({ count: 1 })
-//   console.log(count);
-// }
+import { CountField } from "@/components/count-field";
 
 export default function About() {
-  // Calling Zustand inside of react function (with hook)
-  const count = useCounterStore((state) => state.count);
-  const increment = useCounterStore((state) => state.increment);
-  const decrement = useCounterStore((state) => state.decrement);
-
   return (
-    <>
-      <Card className="m-1 mt-3 w-64">
-        <CardContent>
-          Count: {count}
-          <div className="flex flex-col gap-2 mt-2">
-            <Button onClick={increment}>Increment</Button>
-            <Button onClick={decrement}>Decrement</Button>
-          </div>
-        </CardContent>
-      </Card>
-    </>
+    <div className="p-4">
+      <h1 className="text-2xl font-bold mb-4">About This Project</h1>
+      <p className="mb-2">
+        This project is a dashboard application built with Next.js and Zustand for state management. It allows users to manage and keep track of various links and information related to the Awardit plattforms. The platform is locally storing data using Zustand's persist middleware with localStorage.
+      </p>
+      <p className="mb-6">
+        This project is created by Marcus Falck (marcus-df) and Sebastian Johansson.
+      </p>
+      <CountField />
+    </div>
   );
 }

@@ -1,28 +1,26 @@
-import type { LinkFieldItem } from "@/types";
+import type { LinkListStore } from "@/types";
 
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import { atlassianArray } from "@/data/list-atlassian";
 
-interface AtlassianListStore {
-  list: LinkFieldItem[];
-  add: (item: LinkFieldItem) => void;
-  reset: () => void;
-};
-
 const initialState = {
   list: atlassianArray
 }
 
-export const useAtlassianListStore = create<AtlassianListStore>()(
+export const useAtlassianListStore = create<LinkListStore>()(
   persist(
     (set) => ({
       ...initialState,
       add: (item) => set((state) => ({ list: [...state.list, item] })),
+      delete: (title) =>
+        set((state) => ({
+          list: state.list.filter((item) => item.title !== title),
+        })),
       reset: () => set(initialState),
     }),
     {
-      name: "atlassian-list",
+      name: "list-atlassian",
       storage: createJSONStorage(() => localStorage),
     }
   )
