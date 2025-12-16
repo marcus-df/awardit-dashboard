@@ -132,10 +132,13 @@ export function AddLinkComponent({
   );
 }
 
-export function OtherOptionsMenu({ resetList }: { resetList: () => void }) {
-  const removeList = () => {
-    console.log("Remove List");
-  };
+export function OtherOptionsMenu({
+  resetList,
+  removeList,
+}: {
+  resetList: () => void;
+  removeList: () => void;
+}) {
 
   return (
     <DropdownMenu>
@@ -146,10 +149,8 @@ export function OtherOptionsMenu({ resetList }: { resetList: () => void }) {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-52">
         <DropdownMenuGroup>
-          <DropdownMenuItem onClick={resetList}>
-            Reset List
-          </DropdownMenuItem>
-          <DropdownMenuItem disabled onClick={() => removeList()}>
+          <DropdownMenuItem onClick={resetList}>Reset List</DropdownMenuItem>
+          <DropdownMenuItem onClick={() => removeList()}>
             Remove List
           </DropdownMenuItem>
         </DropdownMenuGroup>
@@ -161,13 +162,15 @@ export function OtherOptionsMenu({ resetList }: { resetList: () => void }) {
 export function LinkFieldMenuGroup({
   addItem,
   resetList,
+  removeList
 }: {
   addItem: (item: LinkFieldItem) => void;
   resetList: () => void;
+  removeList: () => void;
 }) {
   return (
     <ButtonGroup aria-label="List controls" className="h-fit">
-      <OtherOptionsMenu resetList={resetList} />
+      <OtherOptionsMenu resetList={resetList} removeList={removeList} />
       <AddLinkComponent addItem={addItem} />
     </ButtonGroup>
   );

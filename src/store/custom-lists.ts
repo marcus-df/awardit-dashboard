@@ -6,6 +6,7 @@ import type { UniqueIdentifier } from "@dnd-kit/core";
 interface CustomListsStore {
   lists: { id: UniqueIdentifier; listName: string }[];
   update: (lists: { id: UniqueIdentifier; listName: string }[]) => void;
+  remove: (id: UniqueIdentifier) => void;
   reset: () => void;
 }
 
@@ -18,6 +19,10 @@ export const useCustomListsStore = create<CustomListsStore>()(
     (set) => ({
       ...initialState,
       update: (lists) => set({ lists }),
+      remove: (id) =>
+        set((state) => ({
+          lists: state.lists.filter((list) => list.id !== id),
+        })),
       reset: () => set(initialState),
     }),
     {

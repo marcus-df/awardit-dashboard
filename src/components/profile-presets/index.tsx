@@ -76,16 +76,21 @@ const reorderLists = (
   listsArray: { id: UniqueIdentifier; listName: string }[]
 ) => {
   const newListsOrder = newItemsOrder.map((id) => {
-    return listsArray.find((item) => item.id === id)!;
+    return listsArray.find((item) => item && item.id === id);
   });
-  return newListsOrder;
+
+  return newListsOrder.filter((item) => item !== undefined);
 };
 
 export function ProfilePreset({ lists }: PresetProps) {
   const setProfilePreset = usePresetStore((state) => state.setPreset);
   const profilePreset = usePresetStore((state) => state.preset);
   const updateLists = useCustomListsStore((state) => state.update);
-  const [items, setItems] = useState<UniqueIdentifier[]>(lists.map((item) => item.id));
+
+  const [items, setItems] = useState<UniqueIdentifier[]>(
+    lists.map((item) => item.id)
+  );
+
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
@@ -110,6 +115,12 @@ export function ProfilePreset({ lists }: PresetProps) {
     }
   }, [items]);
 
+  useEffect(() => {
+    if (lists.length < items.length) {
+      setItems(lists.map((item) => item && item.id));
+    }
+  }, [lists, items]);
+
   return (
     <div className="flex flex-wrap justify-center gap-4 max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg 2xl:max-w-screen-2xl">
       <DndContext
@@ -120,7 +131,9 @@ export function ProfilePreset({ lists }: PresetProps) {
         <SortableContext items={items} strategy={rectSortingStrategy}>
           {items.map((id) => (
             <SortableItem
-              listName={lists.find((item) => item.id === id)?.listName || ""}
+              listName={
+                lists.find((item) => item && item.id === id)?.listName || ""
+              }
               id={id}
               key={id}
             />

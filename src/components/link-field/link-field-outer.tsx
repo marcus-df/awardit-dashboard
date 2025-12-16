@@ -15,7 +15,7 @@ export function LinkFieldOuter({
     <div className={className}>    
       <div className="border rounded-md bg-background">
         <div className="p-3 pb-1 flex justify-between items-center">
-          <h4 className="text-sm font-semibold leading-none text-amber-600 dark:text-amber-400">
+          <h4 className="text-md font-semibold leading-none text-amber-600 dark:text-amber-400">
             {title}
           </h4>
           {menuComp && menuComp}

@@ -23,7 +23,7 @@ export default function Home() {
 
   return (
     <div className="font-[family-name:var(--font-geist-sans)] h-full flex flex-col justify-center items-center">
-      {preset 
+      {(preset) 
         ? <PresetsComponents preset={preset} /> 
         : <PresetSelector />
       }
