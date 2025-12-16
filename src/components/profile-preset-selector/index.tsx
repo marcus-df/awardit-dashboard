@@ -49,12 +49,12 @@ export default function PresetSelector() {
         </>
       ) : (
         <>
-          <p className="mb-3">Select a preset based on your role:</p>
+          <h2 className="mb-3 text-md font-semibold">Select a preset based on your role</h2>
           <div className="flex flex-wrap justify-center gap-4 mx-auto max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg 2xl:max-w-screen-2xl">
             {professions.map((profession, i) => (
               <Card key={i}>
-                <CardHeader>{profession.header}</CardHeader>
-                <CardContent className="flex flex-col items-center">
+                <CardHeader className="text-md font-semibold">{profession.header}</CardHeader>
+                <CardContent className="flex flex-col items-center gap-2">
                   <UserRound size={64} />
                   {profession.content}
                 </CardContent>

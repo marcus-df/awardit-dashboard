@@ -13,6 +13,7 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
 } from "@/components/ui/sidebar";
+import Link from "next/link";
 
 const baseLinks = [
   {
@@ -43,10 +44,10 @@ export function AppSidebar() {
           <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
             <LayoutDashboard className="size-5" />
           </div>
-          <div className="flex flex-col gap-0.5 leading-none">
+          <Link href="/" className="flex flex-col gap-0.5 leading-none">
             <span className="font-semibold">Awardit Dashboard</span>
             <span className="">v0.2.0</span>
-          </div>
+          </Link>
         </SidebarMenuButton>
       </SidebarHeader>
       <SidebarContent>

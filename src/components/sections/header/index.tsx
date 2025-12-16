@@ -3,6 +3,7 @@
 import { useAwarditAdminListStore } from "@/store/list-awardit-admin";
 import { useAtlassianListStore } from "@/store/list-atlassian";
 import { useMagentoListStore } from "@/store/list-magento";
+import { useOtherListStore } from "@/store/list-other";
 import { usePresetStore } from "@/store/preset";
 import { usePathname } from "next/navigation";
 
@@ -19,6 +20,7 @@ export default function Header() {
   const awarditAdminStore = useAwarditAdminListStore();
   const atlassianListStore = useAtlassianListStore();
   const magentoListStore = useMagentoListStore();
+  const otherListStore = useOtherListStore();
   const presetStore = usePresetStore();
   const pathname = usePathname();
 
@@ -29,6 +31,9 @@ export default function Header() {
     useAtlassianListStore.persist.clearStorage();
     magentoListStore.reset();
     useMagentoListStore.persist.clearStorage()
+    otherListStore.reset();
+    useOtherListStore.persist.clearStorage();
+    
     presetStore.reset();
     usePresetStore.persist.clearStorage();
   }
@@ -42,7 +47,6 @@ export default function Header() {
             <MenubarContent align="end">
               <MenubarItem onSelect={reset}>
                 Remove Settings
-                <MenubarShortcut>⌘K</MenubarShortcut>
               </MenubarItem>
               <MenubarItem disabled>
                 Import Settings
