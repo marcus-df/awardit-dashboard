@@ -45,7 +45,7 @@ export function AppSidebar() {
           </div>
           <div className="flex flex-col gap-0.5 leading-none">
             <span className="font-semibold">Awardit Dashboard</span>
-            <span className="">v0.1.0</span>
+            <span className="">v0.2.0</span>
           </div>
         </SidebarMenuButton>
       </SidebarHeader>

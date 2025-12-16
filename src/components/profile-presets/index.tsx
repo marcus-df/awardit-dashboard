@@ -10,6 +10,7 @@ import {
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
+
 import {
   arrayMove,
   SortableContext,
@@ -116,7 +117,7 @@ export function ProfilePreset({ lists }: PresetProps) {
         <SortableContext items={items} strategy={rectSortingStrategy}>
           {items.map((id) => (
             <SortableItem
-              listName={lists.find((item) => item.id === id)?.listName!}
+              listName={lists.find((item) => item.id === id)?.listName || ""}
               id={id}
               key={id}
             />

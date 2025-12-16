@@ -8,7 +8,7 @@ export default function About() {
         This project is a dashboard application built with Next.js and Zustand
         for state management. It allows users to manage and keep track of
         various links and information related to the Awardit platforms. The
-        platform is locally storing data using Zustand's persist middleware with
+        platform is locally storing data using Zustands persist middleware with
         localStorage.
       </p>
       <p className="mb-6 max-w-4xl">
