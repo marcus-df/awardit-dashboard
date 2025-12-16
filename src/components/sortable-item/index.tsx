@@ -15,13 +15,13 @@ interface SortableItemProps {
 
 const getListComponent = (component: string) => {
   switch (component) {
-    case "preset-magento":
+    case "list-magento":
       return <LinkFieldPresetMagento />;
-    case "preset-atlassian":
+    case "list-atlassian":
       return <LinkFieldPresetAtlassian />;
-    case "preset-awardit-admin":
+    case "list-awardit-admin":
       return <LinkFieldPresetAwarditAdmin />;
-    case "preset-other":
+    case "list-other":
       return <LinkFieldPresetOther />;
     default:
       return null;
@@ -33,7 +33,7 @@ export function SortableItem({ id, listName }: SortableItemProps) {
     useSortable({ id });
 
   const component = getListComponent(listName)
-  
+
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,

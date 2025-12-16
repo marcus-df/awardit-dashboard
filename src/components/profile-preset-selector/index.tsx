@@ -22,17 +22,17 @@ export default function PresetSelector() {
   const setSelectPreset = usePresetStore((state) => state.setSelectPreset);
   const professions: Profession[] = [
     {
-      name: "Frontend",
+      name: "frontend",
       header: "Frontend developer",
       content: "A preset for Frontend developers",
     },
     {
-      name: "Backend",
+      name: "backend",
       header: "Backend developer",
       content: "A preset for Backend developers",
     },
     {
-      name: "CustomerService",
+      name: "customer-service",
       header: "Customer Service",
       content: "A preset for Customer Service",
     },
@@ -69,5 +69,5 @@ export default function PresetSelector() {
         </>
       )}
     </div>
-  )
+  );
 }

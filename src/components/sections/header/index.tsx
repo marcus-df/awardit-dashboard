@@ -44,9 +44,13 @@ export default function Header() {
                 Remove Settings
                 <MenubarShortcut>⌘K</MenubarShortcut>
               </MenubarItem>
-              <MenubarItem>
+              <MenubarItem disabled>
                 Import Settings
                 <MenubarShortcut>⌘I</MenubarShortcut>
+              </MenubarItem>
+              <MenubarItem disabled>
+                Export Settings
+                <MenubarShortcut>⌘E</MenubarShortcut>
               </MenubarItem>
             </MenubarContent>
           </MenubarMenu>

@@ -21,8 +21,6 @@ const PresetsComponents = dynamic(
 export default function Home() {
   const preset = usePresetStore((state) => state.preset);
 
-  console.log("Current preset:", preset);
-
   return (
     <div className="font-[family-name:var(--font-geist-sans)] h-full flex flex-col justify-center items-center">
       {preset 
