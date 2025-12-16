@@ -7,14 +7,15 @@ export default function About() {
       <p className="mb-6 max-w-4xl">
         This project is a dashboard application built with Next.js and Zustand
         for state management. It allows users to manage and keep track of
-        various links and information related to the Awardit platforms. The
+        various links and information related to the Awardit platforms. This
         platform is locally storing data using Zustands persist middleware with
         localStorage.
       </p>
       <p className="mb-6 max-w-4xl">
         The counter below demonstrates the use of Zustand for state management
-        with persistence. You can increment and decrement the count, and the
-        value will be saved so that you can refresh or close the page and return later.
+        with persistence. You can increment and decrement the count, the
+        value will be saved locally, so that you can refresh or close the 
+        page and return later, without losing your data.
       </p>
       <CountField />
     </div>
