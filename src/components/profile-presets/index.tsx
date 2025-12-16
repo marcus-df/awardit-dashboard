@@ -41,12 +41,16 @@ const frontendPresetLists = [
   { id: 4, listName: "list-other" },
 ];
 
-const customerServicePresetLists = [
+const backendPresetLists = [
   { id: 1, listName: "list-magento" },
-  { id: 2, listName: "list-other" },
+  { id: 2, listName: "list-atlassian" },
+  { id: 3, listName: "list-other" },
 ];
 
-const backendPresetLists = [{ id: 1, listName: "list-magento" }];
+const customerServicePresetLists = [
+  { id: 1, listName: "list-atlassian" },
+  { id: 2, listName: "list-other" },
+];
 
 function PresetSwitch({ preset }: Props) {
   switch (preset) {
