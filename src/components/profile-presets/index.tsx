@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 
+import type { DragEndEvent } from "@dnd-kit/core";
+
 import {
   DndContext,
   closestCenter,
@@ -9,6 +11,7 @@ import {
   PointerSensor,
   useSensor,
   useSensors,
+  UniqueIdentifier,
 } from "@dnd-kit/core";
 
 import {
@@ -24,7 +27,7 @@ import { usePresetStore } from "@/store/preset";
 import { useCustomListsStore } from "@/store/custom-lists";
 
 interface PresetProps {
-  lists: { id: number; listName: string }[];
+  lists: { id: UniqueIdentifier; listName: string }[];
 }
 
 interface Props {
@@ -69,8 +72,8 @@ export function Presets({ preset }: Props) {
 }
 
 const reorderLists = (
-  newItemsOrder: number[],
-  listsArray: { id: number; listName: string }[]
+  newItemsOrder: UniqueIdentifier[],
+  listsArray: { id: UniqueIdentifier; listName: string }[]
 ) => {
   const newListsOrder = newItemsOrder.map((id) => {
     return listsArray.find((item) => item.id === id)!;
@@ -82,7 +85,7 @@ export function ProfilePreset({ lists }: PresetProps) {
   const setProfilePreset = usePresetStore((state) => state.setPreset);
   const profilePreset = usePresetStore((state) => state.preset);
   const updateLists = useCustomListsStore((state) => state.update);
-  const [items, setItems] = useState(lists.map((item) => item.id));
+  const [items, setItems] = useState<UniqueIdentifier[]>(lists.map((item) => item.id));
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
@@ -127,10 +130,10 @@ export function ProfilePreset({ lists }: PresetProps) {
     </div>
   );
 
-  function handleDragEnd(event: any) {
+  function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event;
 
-    if (active.id !== over.id) {
+    if (over && active.id !== over.id) {
       setItems((items) => {
         const oldIndex = items.indexOf(active.id);
         const newIndex = items.indexOf(over.id);

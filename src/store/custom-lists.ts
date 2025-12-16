@@ -1,9 +1,11 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
+import type { UniqueIdentifier } from "@dnd-kit/core";
+
 interface CustomListsStore {
-  lists: { id: number; listName: string }[];
-  update: (lists: { id: number; listName: string }[]) => void;
+  lists: { id: UniqueIdentifier; listName: string }[];
+  update: (lists: { id: UniqueIdentifier; listName: string }[]) => void;
   reset: () => void;
 }
 
