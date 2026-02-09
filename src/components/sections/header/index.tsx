@@ -1,8 +1,8 @@
 "use client"
 
-import { useAwarditAdminListStore } from "@/store/list-awardit-admin";
-import { useAtlassianListStore } from "@/store/list-atlassian";
-import { useMagentoListStore } from "@/store/list-magento";
+import { useBeResourcesListStore } from "@/store/list-be-resources";
+import { useFeFrameworksListStore } from "@/store/list-fe-frameworks";
+import { useGeneralListStore } from "@/store/list-general";
 import { useOtherListStore } from "@/store/list-other";
 import { usePresetStore } from "@/store/preset";
 import { usePathname } from "next/navigation";
@@ -17,20 +17,20 @@ import {
 } from "@/components/ui/menubar"
 
 export default function Header() {
-  const awarditAdminStore = useAwarditAdminListStore();
-  const atlassianListStore = useAtlassianListStore();
-  const magentoListStore = useMagentoListStore();
+  const beResourcesStore = useBeResourcesListStore();
+  const feFrameworksListStore = useFeFrameworksListStore();
+  const generalListStore = useGeneralListStore();
   const otherListStore = useOtherListStore();
   const presetStore = usePresetStore();
   const pathname = usePathname();
 
   const reset = () => {
-    awarditAdminStore.reset();
-    useAwarditAdminListStore.persist.clearStorage()
-    atlassianListStore.reset();
-    useAtlassianListStore.persist.clearStorage();
-    magentoListStore.reset();
-    useMagentoListStore.persist.clearStorage()
+    beResourcesStore.reset();
+    useBeResourcesListStore.persist.clearStorage()
+    feFrameworksListStore.reset();
+    useFeFrameworksListStore.persist.clearStorage();
+    generalListStore.reset();
+    useGeneralListStore.persist.clearStorage()
     otherListStore.reset();
     useOtherListStore.persist.clearStorage();
     

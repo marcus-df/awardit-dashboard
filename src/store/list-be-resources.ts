@@ -2,13 +2,13 @@ import type { LinkListStore } from "@/types";
 
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-import { magentoArray } from "@/data/list-magento";
+import { beResourcesArray } from "@/data/list-be-resources";
 
 const initialState = {
-  list: magentoArray,
-};
+  list: beResourcesArray
+}
 
-export const useMagentoListStore = create<LinkListStore>()(
+export const useBeResourcesListStore = create<LinkListStore>()(
   persist(
     (set) => ({
       ...initialState,
@@ -16,11 +16,11 @@ export const useMagentoListStore = create<LinkListStore>()(
       delete: (title) =>
         set((state) => ({
           list: state.list.filter((item) => item.title !== title),
-        })),
-      reset: () => set(initialState),
+      })),
+      reset: () => set(initialState)
     }),
     {
-      name: "list-magento",
+      name: "list-admin",
       storage: createJSONStorage(() => localStorage),
     }
   )

@@ -2,13 +2,13 @@ import type { LinkListStore } from "@/types";
 
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-import { atlassianArray } from "@/data/list-atlassian";
+import { feFrameworksArray } from "@/data/list-fe-frameworks";
 
 const initialState = {
-  list: atlassianArray
-}
+  list: feFrameworksArray,
+};
 
-export const useAtlassianListStore = create<LinkListStore>()(
+export const useFeFrameworksListStore = create<LinkListStore>()(
   persist(
     (set) => ({
       ...initialState,
@@ -20,8 +20,8 @@ export const useAtlassianListStore = create<LinkListStore>()(
       reset: () => set(initialState),
     }),
     {
-      name: "list-atlassian",
+      name: "list-fe-frameworks",
       storage: createJSONStorage(() => localStorage),
-    }
-  )
+    },
+  ),
 );

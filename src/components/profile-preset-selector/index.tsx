@@ -23,18 +23,18 @@ export default function PresetSelector() {
   const professions: Profession[] = [
     {
       name: "frontend",
-      header: "Frontend developer",
-      content: "A preset for Frontend developers",
+      header: "Frontend Developer",
+      content: "A preset for Frontend Developers",
     },
     {
       name: "backend",
-      header: "Backend developer",
-      content: "A preset for Backend developers",
+      header: "Backend Developer",
+      content: "A preset for Backend Developers",
     },
     {
-      name: "customer-service",
-      header: "Customer Service",
-      content: "A preset for Customer Service",
+      name: "fullstack",
+      header: "Fullstack Developer",
+      content: "A preset for Fullstack Developer",
     },
   ];
 

@@ -1,9 +1,9 @@
 import { LinkFieldOuter } from "@/components/link-field/link-field-outer";
 import { LinkFieldMenuGroup } from "@/components/link-field/link-field-menu-group";
 
-import { useMagentoListStore } from "@/store/list-magento";
-import { useAtlassianListStore } from "@/store/list-atlassian";
-import { useAwarditAdminListStore } from "@/store/list-awardit-admin";
+import { useGeneralListStore } from "@/store/list-general";
+import { useFeFrameworksListStore} from "@/store/list-fe-frameworks";
+import { useBeResourcesListStore } from "@/store/list-be-resources";
 import { useOtherListStore } from "@/store/list-other";
 import { useCustomListsStore } from "@/store/custom-lists";
 import { UniqueIdentifier } from "@dnd-kit/core";
@@ -20,75 +20,75 @@ const removeList = (
   });
 };
 
-export function LinkFieldPresetMagento() {
-  const itemArr = useMagentoListStore((state) => state.list);
-  const addItem = useMagentoListStore((state) => state.add);
-  const deleteItem = useMagentoListStore((state) => state.delete);
-  const resetList = useMagentoListStore((state) => state.reset);
+export function LinkFieldPresetGeneral() {
+  const itemArr = useGeneralListStore((state) => state.list);
+  const addItem = useGeneralListStore((state) => state.add);
+  const deleteItem = useGeneralListStore((state) => state.delete);
+  const resetList = useGeneralListStore((state) => state.reset);
 
   const lists = useCustomListsStore((state) => state.lists);
   const remove = useCustomListsStore((state) => state.remove);
 
   return (
     <LinkFieldOuter
-      title="Magento"
+      title="General"
       items={itemArr}
       deleteItem={deleteItem}
       menuComp={
         <LinkFieldMenuGroup
           addItem={addItem}
           resetList={resetList}
-          removeList={() => removeList(lists, remove, "list-magento")}
+          removeList={() => removeList(lists, remove, "list-general")}
         />
       }
     />
   );
 }
 
-export function LinkFieldPresetAtlassian() {
-  const itemArr = useAtlassianListStore((state) => state.list);
-  const addItem = useAtlassianListStore((state) => state.add);
-  const deleteItem = useAtlassianListStore((state) => state.delete);
-  const resetList = useAtlassianListStore((state) => state.reset);
+export function LinkFieldPresetFeFrameworks() {
+  const itemArr = useFeFrameworksListStore((state) => state.list);
+  const addItem = useFeFrameworksListStore((state) => state.add);
+  const deleteItem = useFeFrameworksListStore((state) => state.delete);
+  const resetList = useFeFrameworksListStore((state) => state.reset);
 
   const lists = useCustomListsStore((state) => state.lists);
   const remove = useCustomListsStore((state) => state.remove);
 
   return (
     <LinkFieldOuter
-      title="Atlassian"
+      title="FE Frameworks"
       items={itemArr}
       deleteItem={deleteItem}
       menuComp={
         <LinkFieldMenuGroup
           addItem={addItem}
           resetList={resetList}
-          removeList={() => removeList(lists, remove, "list-atlassian")}
+          removeList={() => removeList(lists, remove, "list-fe-frameworks")}
         />
       }
     />
   );
 }
 
-export function LinkFieldPresetAwarditAdmin() {
-  const itemArr = useAwarditAdminListStore((state) => state.list);
-  const addItem = useAwarditAdminListStore((state) => state.add);
-  const deleteItem = useAwarditAdminListStore((state) => state.delete);
-  const resetList = useAwarditAdminListStore((state) => state.reset);
+export function LinkFieldPresetBeResources() {
+  const itemArr = useBeResourcesListStore((state) => state.list);
+  const addItem = useBeResourcesListStore((state) => state.add);
+  const deleteItem = useBeResourcesListStore((state) => state.delete);
+  const resetList = useBeResourcesListStore((state) => state.reset);
 
   const lists = useCustomListsStore((state) => state.lists);
   const remove = useCustomListsStore((state) => state.remove);
 
   return (
     <LinkFieldOuter
-      title="Awardit Admin"
+      title="BE Resources"
       items={itemArr}
       deleteItem={deleteItem}
       menuComp={
         <LinkFieldMenuGroup
           addItem={addItem}
           resetList={resetList}
-          removeList={() => removeList(lists, remove, "list-awardit-admin")}
+          removeList={() => removeList(lists, remove, "list-be-resources")}
         />
       }
     />
