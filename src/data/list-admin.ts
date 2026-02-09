@@ -1,6 +1,6 @@
 import { LinkFieldItem } from "@/types";
 
-export const awarditAdminArray: LinkFieldItem[] = [
+export const adminArray: LinkFieldItem[] = [
   {
     href: "https://awardit.se/awarditadmin/login.jsp",
     title: "Awardit admin",

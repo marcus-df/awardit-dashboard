@@ -1,6 +1,6 @@
 "use client"
 
-import { useAwarditAdminListStore } from "@/store/list-awardit-admin";
+import { useAdminListStore } from "@/store/list-admin";
 import { useAtlassianListStore } from "@/store/list-atlassian";
 import { useMagentoListStore } from "@/store/list-magento";
 import { useOtherListStore } from "@/store/list-other";
@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/menubar"
 
 export default function Header() {
-  const awarditAdminStore = useAwarditAdminListStore();
+  const adminStore = useAdminListStore();
   const atlassianListStore = useAtlassianListStore();
   const magentoListStore = useMagentoListStore();
   const otherListStore = useOtherListStore();
@@ -25,8 +25,8 @@ export default function Header() {
   const pathname = usePathname();
 
   const reset = () => {
-    awarditAdminStore.reset();
-    useAwarditAdminListStore.persist.clearStorage()
+    adminStore.reset();
+    useAdminListStore.persist.clearStorage()
     atlassianListStore.reset();
     useAtlassianListStore.persist.clearStorage();
     magentoListStore.reset();

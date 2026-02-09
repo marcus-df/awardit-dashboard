@@ -37,7 +37,7 @@ interface Props {
 const frontendPresetLists = [
   { id: 1, listName: "list-magento" },
   { id: 2, listName: "list-atlassian" },
-  { id: 3, listName: "list-awardit-admin" },
+  { id: 3, listName: "list-admin" },
   { id: 4, listName: "list-other" },
 ];
 

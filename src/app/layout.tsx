@@ -19,8 +19,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Awardit Dashboard v0.2.0",
-  description: "Dashboard for managing personal Awardit links and information.",
+  title: "Local Dashboard v0.2.1",
+  description: "Dashboard for managing personal links and information.",
 };
 
 export default function RootLayout({

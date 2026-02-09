@@ -26,7 +26,7 @@ interface FooterProps {
 }
 
 export default function FooterSection({
-  copyright = "© 2025 Awardit. All rights reserved",
+  copyright = "© 2025 marcus-df. All rights reserved",
   policies = [
     { text: "Privacy Policy", href: "" },
     { text: "Terms of Service", href: "" },

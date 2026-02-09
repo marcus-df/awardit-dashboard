@@ -3,7 +3,7 @@ import { LinkFieldMenuGroup } from "@/components/link-field/link-field-menu-grou
 
 import { useMagentoListStore } from "@/store/list-magento";
 import { useAtlassianListStore } from "@/store/list-atlassian";
-import { useAwarditAdminListStore } from "@/store/list-awardit-admin";
+import { useAdminListStore } from "@/store/list-admin";
 import { useOtherListStore } from "@/store/list-other";
 import { useCustomListsStore } from "@/store/custom-lists";
 import { UniqueIdentifier } from "@dnd-kit/core";
@@ -70,25 +70,25 @@ export function LinkFieldPresetAtlassian() {
   );
 }
 
-export function LinkFieldPresetAwarditAdmin() {
-  const itemArr = useAwarditAdminListStore((state) => state.list);
-  const addItem = useAwarditAdminListStore((state) => state.add);
-  const deleteItem = useAwarditAdminListStore((state) => state.delete);
-  const resetList = useAwarditAdminListStore((state) => state.reset);
+export function LinkFieldPresetAdmin() {
+  const itemArr = useAdminListStore((state) => state.list);
+  const addItem = useAdminListStore((state) => state.add);
+  const deleteItem = useAdminListStore((state) => state.delete);
+  const resetList = useAdminListStore((state) => state.reset);
 
   const lists = useCustomListsStore((state) => state.lists);
   const remove = useCustomListsStore((state) => state.remove);
 
   return (
     <LinkFieldOuter
-      title="Awardit Admin"
+      title="Admin"
       items={itemArr}
       deleteItem={deleteItem}
       menuComp={
         <LinkFieldMenuGroup
           addItem={addItem}
           resetList={resetList}
-          removeList={() => removeList(lists, remove, "list-awardit-admin")}
+          removeList={() => removeList(lists, remove, "list-admin")}
         />
       }
     />

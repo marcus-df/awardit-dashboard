@@ -5,7 +5,7 @@ import { GripHorizontal } from "lucide-react";
 
 import { LinkFieldPresetMagento } from "@/components/link-field-presets";
 import { LinkFieldPresetAtlassian } from "@/components/link-field-presets";
-import { LinkFieldPresetAwarditAdmin } from "@/components/link-field-presets";
+import { LinkFieldPresetAdmin } from "@/components/link-field-presets";
 import { LinkFieldPresetOther } from "@/components/link-field-presets";
 
 interface SortableItemProps {
@@ -19,8 +19,8 @@ const getListComponent = (component: string) => {
       return <LinkFieldPresetMagento />;
     case "list-atlassian":
       return <LinkFieldPresetAtlassian />;
-    case "list-awardit-admin":
-      return <LinkFieldPresetAwarditAdmin />;
+    case "list-admin":
+      return <LinkFieldPresetAdmin />;
     case "list-other":
       return <LinkFieldPresetOther />;
     default:
