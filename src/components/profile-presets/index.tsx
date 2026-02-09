@@ -35,21 +35,22 @@ interface Props {
 }
 
 const frontendPresetLists = [
-  { id: 1, listName: "list-magento" },
-  { id: 2, listName: "list-atlassian" },
-  { id: 3, listName: "list-admin" },
-  { id: 4, listName: "list-other" },
-];
-
-const backendPresetLists = [
-  { id: 1, listName: "list-magento" },
-  { id: 2, listName: "list-atlassian" },
+  { id: 1, listName: "list-general" },
+  { id: 2, listName: "list-fe-frameworks" },
   { id: 3, listName: "list-other" },
 ];
 
-const customerServicePresetLists = [
-  { id: 1, listName: "list-atlassian" },
-  { id: 2, listName: "list-other" },
+const backendPresetLists = [
+  { id: 1, listName: "list-general" },
+  { id: 2, listName: "list-be-resources" },
+  { id: 3, listName: "list-other" },
+];
+
+const fullstackPresetLists = [
+  { id: 1, listName: "list-general" },
+  { id: 2, listName: "list-fe-frameworks" },
+  { id: 3, listName: "list-be-resources" },
+  { id: 4, listName: "list-other" },
 ];
 
 function PresetSwitch({ preset }: Props) {
@@ -60,8 +61,8 @@ function PresetSwitch({ preset }: Props) {
     case "backend":
       return <ProfilePreset lists={backendPresetLists} />;
 
-    case "customer-service":
-      return <ProfilePreset lists={customerServicePresetLists} />;
+    case "fullstack":
+      return <ProfilePreset lists={fullstackPresetLists} />;
 
     case "custom":
       return <CustomLists />;

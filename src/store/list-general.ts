@@ -2,13 +2,13 @@ import type { LinkListStore } from "@/types";
 
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-import { adminArray } from "@/data/list-admin";
+import { generalArray } from "@/data/list-general";
 
 const initialState = {
-  list: adminArray
-}
+  list: generalArray,
+};
 
-export const useAdminListStore = create<LinkListStore>()(
+export const useGeneralListStore = create<LinkListStore>()(
   persist(
     (set) => ({
       ...initialState,
@@ -16,11 +16,11 @@ export const useAdminListStore = create<LinkListStore>()(
       delete: (title) =>
         set((state) => ({
           list: state.list.filter((item) => item.title !== title),
-      })),
-      reset: () => set(initialState)
+        })),
+      reset: () => set(initialState),
     }),
     {
-      name: "list-admin",
+      name: "list-general",
       storage: createJSONStorage(() => localStorage),
     }
   )

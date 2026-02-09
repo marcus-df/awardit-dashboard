@@ -3,9 +3,9 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { GripHorizontal } from "lucide-react";
 
-import { LinkFieldPresetMagento } from "@/components/link-field-presets";
-import { LinkFieldPresetAtlassian } from "@/components/link-field-presets";
-import { LinkFieldPresetAdmin } from "@/components/link-field-presets";
+import { LinkFieldPresetGeneral } from "@/components/link-field-presets";
+import { LinkFieldPresetFeFrameworks } from "@/components/link-field-presets";
+import { LinkFieldPresetBeResources } from "@/components/link-field-presets";
 import { LinkFieldPresetOther } from "@/components/link-field-presets";
 
 interface SortableItemProps {
@@ -15,12 +15,12 @@ interface SortableItemProps {
 
 const getListComponent = (component: string) => {
   switch (component) {
-    case "list-magento":
-      return <LinkFieldPresetMagento />;
-    case "list-atlassian":
-      return <LinkFieldPresetAtlassian />;
-    case "list-admin":
-      return <LinkFieldPresetAdmin />;
+    case "list-general":
+      return <LinkFieldPresetGeneral />;
+    case "list-fe-frameworks":
+      return <LinkFieldPresetFeFrameworks />;
+    case "list-be-resources":
+      return <LinkFieldPresetBeResources />;
     case "list-other":
       return <LinkFieldPresetOther />;
     default:
