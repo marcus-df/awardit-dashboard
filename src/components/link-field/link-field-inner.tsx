@@ -13,10 +13,10 @@ import {
 
 export function LinkFieldInner({
   items,
-  deleteItem,
+  delItem,
 }: {
   items: LinkFieldItem[];
-  deleteItem: (title: string) => void;
+  delItem: (title: string) => void;
 }) {
   return (
     <div className="mb-2">
@@ -36,7 +36,7 @@ export function LinkFieldInner({
             </div>
           </ContextMenuTrigger>
           <ContextMenuContent className="w-36">
-            <ContextMenuItem onSelect={() => deleteItem(link.title)}>
+            <ContextMenuItem onSelect={() => delItem(link.title)}>
               Delete
             </ContextMenuItem>
           </ContextMenuContent>

@@ -1,11 +1,12 @@
 "use client"
 
 import { useBeResourcesListStore } from "@/store/list-be-resources";
-import { useFeFrameworksListStore } from "@/store/list-fe-frameworks";
+import { useFeResourcesListStore } from "@/store/list-fe-resources";
 import { useGeneralListStore } from "@/store/list-general";
-import { useOtherListStore } from "@/store/list-other";
 import { usePresetStore } from "@/store/preset";
 import { usePathname } from "next/navigation";
+
+import { useGenericListStore } from "@/store/list-generic";
 
 import {
   Menubar,
@@ -18,21 +19,21 @@ import {
 
 export default function Header() {
   const beResourcesStore = useBeResourcesListStore();
-  const feFrameworksListStore = useFeFrameworksListStore();
+  const feResourcesListStore = useFeResourcesListStore();
   const generalListStore = useGeneralListStore();
-  const otherListStore = useOtherListStore();
+  const genericListStore = useGenericListStore();
   const presetStore = usePresetStore();
   const pathname = usePathname();
 
   const reset = () => {
     beResourcesStore.reset();
     useBeResourcesListStore.persist.clearStorage()
-    feFrameworksListStore.reset();
-    useFeFrameworksListStore.persist.clearStorage();
+    feResourcesListStore.reset();
+    useFeResourcesListStore.persist.clearStorage();
     generalListStore.reset();
     useGeneralListStore.persist.clearStorage()
-    otherListStore.reset();
-    useOtherListStore.persist.clearStorage();
+    genericListStore.reset();
+    useGenericListStore.persist.clearStorage();
     
     presetStore.reset();
     usePresetStore.persist.clearStorage();

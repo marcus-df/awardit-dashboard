@@ -8,7 +8,7 @@ export function LinkFieldOuter({
   className,
   title,
   items,
-  deleteItem,
+  delItem,
   menuComp,
 }: LinkFieldProps) {
   return (
@@ -21,7 +21,7 @@ export function LinkFieldOuter({
           {menuComp && menuComp}
         </div>
         <ScrollArea className="h-72 w-72">
-          <LinkFieldInner items={items} deleteItem={deleteItem} />
+          <LinkFieldInner items={items} delItem={delItem} />
         </ScrollArea>
       </div>
     </div>

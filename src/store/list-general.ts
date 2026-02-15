@@ -6,6 +6,7 @@ import { generalArray } from "@/data/list-general";
 
 const initialState = {
   list: generalArray,
+  title: "General"
 };
 
 export const useGeneralListStore = create<LinkListStore>()(
@@ -17,6 +18,7 @@ export const useGeneralListStore = create<LinkListStore>()(
         set((state) => ({
           list: state.list.filter((item) => item.title !== title),
         })),
+      changeTitle: (title) => set(() => ({ title: title })),
       reset: () => set(initialState),
     }),
     {
