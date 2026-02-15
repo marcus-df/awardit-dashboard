@@ -30,7 +30,7 @@ export function LinkFieldInner({
                 target={link.external ? "_blank" : "_self"}
                 className="text-sm flex justify-between items-center"
               >
-                {link.title}{" "}
+                <span className="pr-3 shrink truncate">{link.title}{" "}</span>
                 <ArrowUpRightIcon size={16} className="opacity-65" />
               </a>
             </div>

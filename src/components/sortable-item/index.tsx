@@ -13,25 +13,24 @@ import {
 
 interface SortableItemProps {
   id: UniqueIdentifier;
-  title: string;
 }
 
-const getListComponent = (uid: UniqueIdentifier, title: string) => {
+const getListComponent = (uid: UniqueIdentifier) => {
   switch (uid) {
     case "list-general":
-      return <LinkFieldPreset uid={uid} title={title} />;
+      return <LinkFieldPreset uid={uid} />;
     case "list-fe-resources":
-      return <LinkFieldPresetFeResources uid={uid} title={title} />;
+      return <LinkFieldPresetFeResources uid={uid} />;
     case "list-be-resources":
-      return <LinkFieldPresetBeResources uid={uid} title={title} />;
+      return <LinkFieldPresetBeResources uid={uid} />;
     case "list-generic":
-      return <LinkFieldPresetGeneric uid={uid} title={title} />;
+      return <LinkFieldPresetGeneric uid={uid} />;
     default:
       return null;
   }
 };
 
-export function SortableItem({ id, title }: SortableItemProps) {
+export function SortableItem({ id }: SortableItemProps) {
   const {
     isDragging,
     attributes,
@@ -42,7 +41,7 @@ export function SortableItem({ id, title }: SortableItemProps) {
     transition,
   } = useSortable({ id });
 
-  const component = getListComponent(id, title);
+  const component = getListComponent(id);
 
   const style = {
     transform: CSS.Transform.toString(transform),

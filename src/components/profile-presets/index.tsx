@@ -23,13 +23,15 @@ import {
   rectSortingStrategy,
 } from "@dnd-kit/sortable";
 
+import { Card, CardContent } from "@/components/ui/card";
+
 import { CustomLists } from "./custom-lists";
 import { SortableItem } from "@/components/sortable-item";
 import { usePresetStore } from "@/store/preset";
 import { useCustomListsStore } from "@/store/custom-lists";
 
 interface PresetProps {
-  lists: { uid: UniqueIdentifier; title: string }[];
+  lists: { uid: UniqueIdentifier }[];
 }
 
 interface Props {
@@ -37,22 +39,22 @@ interface Props {
 }
 
 const frontendPresetLists = [
-  { uid: "list-general", title: "General" },
-  { uid: "list-fe-resources", title: "FE Resources" },
-  { uid: "list-generic-1", title: "Other" },
+  { uid: "list-general" },
+  { uid: "list-fe-resources" },
+  { uid: "list-generic" },
 ];
 
 const backendPresetLists = [
-  { uid: "list-general", title: "General" },
-  { uid: "list-be-resources", title: "BE Resources" },
-  { uid: "list-generic-1", title: "Other" },
+  { uid: "list-general" },
+  { uid: "list-be-resources" },
+  { uid: "list-generic" },
 ];
 
 const fullstackPresetLists = [
-  { uid: "list-general", title: "General" },
-  { uid: "list-fe-resources", title: "FE Resources" },
-  { uid: "list-be-resources", title: "BE Resources" },
-  { uid: "list-generic", title: "Other" },
+  { uid: "list-general" },
+  { uid: "list-fe-resources" },
+  { uid: "list-be-resources" },
+  { uid: "list-generic" },
 ];
 
 function PresetSwitch({ preset }: Props) {
@@ -76,7 +78,7 @@ export function Presets({ preset }: Props) {
 
 const reorderLists = (
   newItemsOrder: UniqueIdentifier[],
-  listsArray: { uid: UniqueIdentifier; title: string }[],
+  listsArray: { uid: UniqueIdentifier }[],
 ) => {
   const newListsOrder = newItemsOrder.map((id) => {
     return listsArray.find((item) => item && item.uid === id);
@@ -128,23 +130,25 @@ export function ProfilePreset({ lists }: PresetProps) {
   }, [lists, items]);
 
   return (
-    <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg 2xl:max-w-screen-2xl">
-      <DndContext
-        sensors={sensors}
-        modifiers={[restrictToWindowEdges]}
-        collisionDetection={closestCenter}
-        onDragEnd={handleDragEnd}
-      >
-        <SortableContext items={items} strategy={rectSortingStrategy}>
-          {items.map((id) => (
-            <SortableItem
-              title={lists.find((item) => item && item.uid === id)?.title || ""}
-              id={id}
-              key={id}
-            />
-          ))}
-        </SortableContext>
-      </DndContext>
+    <div className="max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg 2xl:max-w-screen-2xl">
+      <Card className="mb-6 pb-4">
+        <CardContent>
+          <div className="grid grid-cols-2 justify-center gap-x-4 gap-y-1">
+            <DndContext
+              sensors={sensors}
+              modifiers={[restrictToWindowEdges]}
+              collisionDetection={closestCenter}
+              onDragEnd={handleDragEnd}
+            >
+              <SortableContext items={items} strategy={rectSortingStrategy}>
+                {items.map((id) => (
+                  <SortableItem id={id} key={id} />
+                ))}
+              </SortableContext>
+            </DndContext>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 

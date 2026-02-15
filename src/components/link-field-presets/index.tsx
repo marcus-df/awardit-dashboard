@@ -12,7 +12,6 @@ import { useGenericListStore } from "@/store/list-generic";
 import { LinkFieldItem } from "@/types";
 
 interface LinkFieldProps {
-  title: string;
   uid: UniqueIdentifier;
 }
 

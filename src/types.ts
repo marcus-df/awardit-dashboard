@@ -25,8 +25,8 @@ export interface LinkListStore {
 };
 
 export interface CustomListsStore {
-  lists: { uid: UniqueIdentifier, title: string }[];
-  update: (lists: { uid: UniqueIdentifier, title: string }[]) => void;
+  lists: { uid: UniqueIdentifier }[];
+  update: (lists: { uid: UniqueIdentifier }[]) => void;
   remove: (uid: UniqueIdentifier) => void;
   reset: () => void;
 }
