@@ -5,9 +5,10 @@ import { createJSONStorage, persist } from "zustand/middleware";
 
 const initialState = {
   list: [],
+  title: "Generic",
 };
 
-export const useOtherListStore = create<LinkListStore>()(
+export const useGenericListStore = create<LinkListStore>()(
   persist(
     (set) => ({
       ...initialState,
@@ -16,11 +17,12 @@ export const useOtherListStore = create<LinkListStore>()(
         set((state) => ({
           list: state.list.filter((item) => item.title !== title),
         })),
+      changeTitle: (title) => set(() => ({ title: title })),
       reset: () => set(initialState),
     }),
     {
-      name: "list-other",
+      name: "list-generic",
       storage: createJSONStorage(() => localStorage),
-    }
-  )
+    },
+  ),
 );

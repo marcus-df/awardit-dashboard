@@ -1,14 +1,15 @@
 import type { LinkListStore } from "@/types";
 
 import { create } from "zustand";
-import { createJSONStorage, persist } from "zustand/middleware";
-import { feFrameworksArray } from "@/data/list-fe-frameworks";
+import { createJSONStorage, persist, } from "zustand/middleware";
+import { feResourcesArray } from "@/data/list-fe-resources";
 
 const initialState = {
-  list: feFrameworksArray,
+  list: feResourcesArray,
+  title: "FE Resources"
 };
 
-export const useFeFrameworksListStore = create<LinkListStore>()(
+export const useFeResourcesListStore = create<LinkListStore>()(
   persist(
     (set) => ({
       ...initialState,
@@ -17,10 +18,11 @@ export const useFeFrameworksListStore = create<LinkListStore>()(
         set((state) => ({
           list: state.list.filter((item) => item.title !== title),
         })),
+      changeTitle: (title) => set(() => ({ title: title })),
       reset: () => set(initialState),
     }),
     {
-      name: "list-fe-frameworks",
+      name: "list-fe-resources",
       storage: createJSONStorage(() => localStorage),
     },
   ),

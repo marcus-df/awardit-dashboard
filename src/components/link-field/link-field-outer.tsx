@@ -8,21 +8,23 @@ export function LinkFieldOuter({
   className,
   title,
   items,
-  deleteItem,
+  delItem,
   menuComp,
 }: LinkFieldProps) {
   return (
     <div className={className}>    
-      <div className="border rounded-md bg-background">
+      <div className="border rounded-md bg-background h-92 lg:w-68">
         <div className="p-3 pb-1 flex justify-between items-center">
-          <h4 className="text-md font-semibold leading-none text-amber-600 dark:text-amber-400">
+          <h4 className="text-md font-semibold mr-4 leading-none text-amber-600 dark:text-amber-400">
             {title}
           </h4>
           {menuComp && menuComp}
         </div>
-        <ScrollArea className="h-72 w-72">
-          <LinkFieldInner items={items} deleteItem={deleteItem} />
-        </ScrollArea>
+        <div className="flex flex-1 shrink">
+          <ScrollArea className="w-full">
+            <LinkFieldInner items={items} delItem={delItem} />
+          </ScrollArea>
+        </div>
       </div>
     </div>
   );

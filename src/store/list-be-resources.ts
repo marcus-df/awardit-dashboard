@@ -5,7 +5,8 @@ import { createJSONStorage, persist } from "zustand/middleware";
 import { beResourcesArray } from "@/data/list-be-resources";
 
 const initialState = {
-  list: beResourcesArray
+  list: beResourcesArray,
+  title: "BE Resources"
 }
 
 export const useBeResourcesListStore = create<LinkListStore>()(
@@ -17,10 +18,11 @@ export const useBeResourcesListStore = create<LinkListStore>()(
         set((state) => ({
           list: state.list.filter((item) => item.title !== title),
       })),
+      changeTitle: (title) => set(() => ({ title: title })),
       reset: () => set(initialState)
     }),
     {
-      name: "list-admin",
+      name: "list-be-resources",
       storage: createJSONStorage(() => localStorage),
     }
   )

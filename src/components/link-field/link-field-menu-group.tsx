@@ -2,7 +2,7 @@
 
 import type { LinkFieldItem } from "@/types";
 
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -40,9 +40,20 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 
-const formSchema = z.object({
+const changeTitleFormSchema = z.object({
+  title: z
+    .string()
+    .min(3, {
+      message: "List title must be at least 3 characters.",
+    })
+    .max(18, {
+      message: "List title must be at most 18 characters.",
+    }),
+});
+
+const addLinkFormSchema = z.object({
   title: z.string().min(3, {
-    message: "Username must be at least 3 characters.",
+    message: "Title must be at least 3 characters.",
   }),
   href: z.string().url({
     message: "Please enter a valid URL",
@@ -58,8 +69,8 @@ export function AddLinkComponent({
 }) {
   const [open, setOpen] = useState(false);
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof addLinkFormSchema>>({
+    resolver: zodResolver(addLinkFormSchema),
     defaultValues: {
       title: "",
       href: "",
@@ -68,7 +79,7 @@ export function AddLinkComponent({
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof addLinkFormSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     addItem(values);
@@ -132,45 +143,128 @@ export function AddLinkComponent({
   );
 }
 
-export function OtherOptionsMenu({
-  resetList,
-  removeList,
+export function ChangeTitleComponent({
+  title,
+  changeTitle,
+  open,
+  setOpen,
 }: {
-  resetList: () => void;
-  removeList: () => void;
+  title: string;
+  changeTitle: (title: string) => void;
+  open: boolean;
+  setOpen: Dispatch<SetStateAction<boolean>>;
 }) {
+  const form = useForm<z.infer<typeof changeTitleFormSchema>>({
+    resolver: zodResolver(changeTitleFormSchema),
+    defaultValues: {
+      title: title,
+    },
+  });
+
+  function onSubmit(values: z.infer<typeof changeTitleFormSchema>) {
+    changeTitle(values.title);
+    setOpen(false);
+    toast("List title has been updated.", {
+      description: new Date().toLocaleString(),
+    });
+  }
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="sm">
-          <MoreHorizontalIcon />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-52">
-        <DropdownMenuGroup>
-          <DropdownMenuItem onClick={resetList}>Reset List</DropdownMenuItem>
-          <DropdownMenuItem onClick={() => removeList()}>
-            Remove List
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogContent className="sm:max-w-md">
+        <DialogHeader>
+          <DialogTitle>Change title</DialogTitle>
+          <DialogDescription>
+            Change title for selected link field
+          </DialogDescription>
+        </DialogHeader>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <FormField
+              control={form.control}
+              name="title"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Title</FormLabel>
+                  <FormControl>
+                    <Input placeholder="My custom list..." {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button type="submit">Save</Button>
+          </form>
+        </Form>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+export function OtherOptionsMenu({
+  title,
+  resetList,
+  removeList,
+  changeTitle,
+}: {
+  title: string;
+  resetList: () => void;
+  removeList: () => void;
+  changeTitle: (title: string) => void;
+}) {
+  const [openChangeTitle, setOpenChangeTitle] = useState(false);
+
+  return (
+    <>
+      <ChangeTitleComponent
+        title={title}
+        changeTitle={changeTitle}
+        open={openChangeTitle}
+        setOpen={setOpenChangeTitle}
+      />
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="outline" size="sm">
+            <MoreHorizontalIcon />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end" className="w-52">
+          <DropdownMenuGroup>
+            <DropdownMenuItem onClick={resetList}>Reset List</DropdownMenuItem>
+            <DropdownMenuItem onClick={removeList}>
+              Remove List
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setOpenChangeTitle(true)}>
+              Change Title
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </>
   );
 }
 
 export function LinkFieldMenuGroup({
   addItem,
+  title,
   resetList,
-  removeList
+  changeTitle,
+  removeList,
 }: {
   addItem: (item: LinkFieldItem) => void;
+  title: string;
   resetList: () => void;
+  changeTitle: (title: string) => void;
   removeList: () => void;
 }) {
   return (
     <ButtonGroup aria-label="List controls" className="h-fit">
-      <OtherOptionsMenu resetList={resetList} removeList={removeList} />
+      <OtherOptionsMenu
+        title={title}
+        resetList={resetList}
+        removeList={removeList}
+        changeTitle={changeTitle}
+      />
       <AddLinkComponent addItem={addItem} />
     </ButtonGroup>
   );

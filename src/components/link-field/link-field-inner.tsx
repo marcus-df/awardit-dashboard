@@ -13,10 +13,10 @@ import {
 
 export function LinkFieldInner({
   items,
-  deleteItem,
+  delItem,
 }: {
   items: LinkFieldItem[];
-  deleteItem: (title: string) => void;
+  delItem: (title: string) => void;
 }) {
   return (
     <div className="mb-2">
@@ -30,13 +30,13 @@ export function LinkFieldInner({
                 target={link.external ? "_blank" : "_self"}
                 className="text-sm flex justify-between items-center"
               >
-                {link.title}{" "}
+                <span className="pr-3 shrink truncate">{link.title}{" "}</span>
                 <ArrowUpRightIcon size={16} className="opacity-65" />
               </a>
             </div>
           </ContextMenuTrigger>
           <ContextMenuContent className="w-36">
-            <ContextMenuItem onSelect={() => deleteItem(link.title)}>
+            <ContextMenuItem onSelect={() => delItem(link.title)}>
               Delete
             </ContextMenuItem>
           </ContextMenuContent>
