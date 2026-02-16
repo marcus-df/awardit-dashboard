@@ -1,12 +1,15 @@
 "use client"
 
-import { useBeResourcesListStore } from "@/store/list-be-resources";
-import { useFeResourcesListStore } from "@/store/list-fe-resources";
+import {
+  useSecondListStore,
+  useThirdListStore,
+  useForthListStore,
+} from "@/store/list-nth";
+
+
 import { useGeneralListStore } from "@/store/list-general";
 import { usePresetStore } from "@/store/preset";
 import { usePathname } from "next/navigation";
-
-import { useGenericListStore } from "@/store/list-generic";
 
 import {
   Menubar,
@@ -18,22 +21,22 @@ import {
 } from "@/components/ui/menubar"
 
 export default function Header() {
-  const beResourcesStore = useBeResourcesListStore();
-  const feResourcesListStore = useFeResourcesListStore();
   const generalListStore = useGeneralListStore();
-  const genericListStore = useGenericListStore();
+  const secondListStore = useSecondListStore();
+  const thirdListStore = useThirdListStore();
+  const forthListStore = useForthListStore();
   const presetStore = usePresetStore();
   const pathname = usePathname();
 
   const reset = () => {
-    beResourcesStore.reset();
-    useBeResourcesListStore.persist.clearStorage()
-    feResourcesListStore.reset();
-    useFeResourcesListStore.persist.clearStorage();
     generalListStore.reset();
     useGeneralListStore.persist.clearStorage()
-    genericListStore.reset();
-    useGenericListStore.persist.clearStorage();
+    secondListStore.reset();
+    useSecondListStore.persist.clearStorage()
+    thirdListStore.reset();
+    useThirdListStore.persist.clearStorage();
+    forthListStore.reset();
+    useForthListStore.persist.clearStorage();
     
     presetStore.reset();
     usePresetStore.persist.clearStorage();

@@ -1,14 +1,15 @@
 import { LinkFieldOuter } from "@/components/link-field/link-field-outer";
 import { LinkFieldMenuGroup } from "@/components/link-field/link-field-menu-group";
-
 import { UniqueIdentifier } from "@dnd-kit/core";
-
 import { useGeneralListStore } from "@/store/list-general";
-import { useFeResourcesListStore } from "@/store/list-fe-resources";
-import { useBeResourcesListStore } from "@/store/list-be-resources";
-import { useCustomListsStore } from "@/store/custom-lists";
 
-import { useGenericListStore } from "@/store/list-generic";
+import {
+  useSecondListStore,
+  useThirdListStore,
+  useForthListStore,
+} from "@/store/list-nth";
+
+import { useCustomListsStore } from "@/store/custom-lists";
 import { LinkFieldItem } from "@/types";
 
 interface LinkFieldProps {
@@ -17,7 +18,7 @@ interface LinkFieldProps {
 
 interface MenuComponentProps {
   uid: UniqueIdentifier;
-  title: string,
+  title: string;
   add: (item: LinkFieldItem) => void;
   changeTitle: (title: string) => void;
   reset: () => void;
@@ -35,7 +36,13 @@ const removeList = (
   });
 };
 
-function MenuComponent({ uid, title, add, changeTitle, reset }: MenuComponentProps) {
+function MenuComponent({
+  uid,
+  title,
+  add,
+  changeTitle,
+  reset,
+}: MenuComponentProps) {
   const lists = useCustomListsStore((state) => state.lists);
   const remove = useCustomListsStore((state) => state.remove);
 
@@ -58,6 +65,31 @@ export function LinkFieldPreset({ uid }: LinkFieldProps) {
   const delItem = useGeneralListStore((state) => state.delete);
   const reset = useGeneralListStore((state) => state.reset);
 
+  return (
+    <LinkFieldOuter
+      title={title}
+      items={itemArr}
+      delItem={delItem}
+      menuComp={
+        <MenuComponent
+          uid={uid}
+          add={addItem}
+          reset={reset}
+          title={title}
+          changeTitle={changeTitle}
+        />
+      }
+    />
+  );
+}
+
+export function LinkFieldPresetSecond({ uid }: LinkFieldProps) {
+  const title = useSecondListStore((state) => state.title);
+  const changeTitle = useSecondListStore((state) => state.changeTitle);
+  const itemArr = useSecondListStore((state) => state.list);
+  const addItem = useSecondListStore((state) => state.add);
+  const delItem = useSecondListStore((state) => state.delete);
+  const reset = useSecondListStore((state) => state.reset);
 
   return (
     <LinkFieldOuter
@@ -77,13 +109,13 @@ export function LinkFieldPreset({ uid }: LinkFieldProps) {
   );
 }
 
-export function LinkFieldPresetFeResources({ uid }: LinkFieldProps) {
-  const title = useFeResourcesListStore((state) => state.title);
-  const changeTitle = useFeResourcesListStore((state) => state.changeTitle);
-  const itemArr = useFeResourcesListStore((state) => state.list);
-  const addItem = useFeResourcesListStore((state) => state.add);
-  const delItem = useFeResourcesListStore((state) => state.delete);
-  const reset = useFeResourcesListStore((state) => state.reset);
+export function LinkFieldPresetThird({ uid }: LinkFieldProps) {
+  const title = useThirdListStore((state) => state.title);
+  const changeTitle = useThirdListStore((state) => state.changeTitle);
+  const itemArr = useThirdListStore((state) => state.list);
+  const addItem = useThirdListStore((state) => state.add);
+  const delItem = useThirdListStore((state) => state.delete);
+  const reset = useThirdListStore((state) => state.reset);
 
   return (
     <LinkFieldOuter
@@ -103,39 +135,13 @@ export function LinkFieldPresetFeResources({ uid }: LinkFieldProps) {
   );
 }
 
-export function LinkFieldPresetBeResources({ uid }: LinkFieldProps) {
-  const title = useBeResourcesListStore((state) => state.title);
-  const changeTitle = useBeResourcesListStore((state) => state.changeTitle);
-  const itemArr = useBeResourcesListStore((state) => state.list);
-  const addItem = useBeResourcesListStore((state) => state.add);
-  const delItem = useBeResourcesListStore((state) => state.delete);
-  const reset = useBeResourcesListStore((state) => state.reset);
-
-  return (
-    <LinkFieldOuter
-      title={title}
-      items={itemArr}
-      delItem={delItem}
-      menuComp={
-        <MenuComponent
-          uid={uid}
-          add={addItem}
-          reset={reset}
-          title={title}
-          changeTitle={changeTitle}
-        />
-      }
-    />
-  );
-}
-
-export function LinkFieldPresetGeneric({ uid }: LinkFieldProps) {
-  const title = useGenericListStore((state) => state.title);
-  const changeTitle = useGenericListStore((state) => state.changeTitle);
-  const itemArr = useGenericListStore((state) => state.list);
-  const addItem = useGenericListStore((state) => state.add);
-  const delItem = useGenericListStore((state) => state.delete);
-  const reset = useGenericListStore((state) => state.reset);
+export function LinkFieldPresetForth({ uid }: LinkFieldProps) {
+  const title = useForthListStore((state) => state.title);
+  const changeTitle = useForthListStore((state) => state.changeTitle);
+  const itemArr = useForthListStore((state) => state.list);
+  const addItem = useForthListStore((state) => state.add);
+  const delItem = useForthListStore((state) => state.delete);
+  const reset = useForthListStore((state) => state.reset);
 
   return (
     <LinkFieldOuter

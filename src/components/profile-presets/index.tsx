@@ -40,21 +40,21 @@ interface Props {
 
 const frontendPresetLists = [
   { uid: "list-general" },
-  { uid: "list-fe-resources" },
-  { uid: "list-generic" },
+  { uid: "list-nth-third" },
+  { uid: "list-nth-forth" },
 ];
 
 const backendPresetLists = [
   { uid: "list-general" },
-  { uid: "list-be-resources" },
-  { uid: "list-generic" },
+  { uid: "list-nth-second" },
+  { uid: "list-nth-forth" },
 ];
 
 const fullstackPresetLists = [
   { uid: "list-general" },
-  { uid: "list-fe-resources" },
-  { uid: "list-be-resources" },
-  { uid: "list-generic" },
+  { uid: "list-nth-second" },
+  { uid: "list-nth-third" },
+  { uid: "list-nth-forth" },
 ];
 
 function PresetSwitch({ preset }: Props) {
@@ -106,14 +106,10 @@ export function ProfilePreset({ lists }: PresetProps) {
   useEffect(() => {
     const reorderedLists = reorderLists(items, lists);
 
-    // Logging item order on change.
-    console.log("items", items);
-
-    // Not working perfectly. Will always be custom in state, but doesnt affect user experience
     if (
       reorderedLists &&
       reorderedLists.length > 0 &&
-      reorderedLists !== lists
+      JSON.stringify(reorderedLists) !== JSON.stringify(lists)
     ) {
       updateLists(reorderedLists);
 

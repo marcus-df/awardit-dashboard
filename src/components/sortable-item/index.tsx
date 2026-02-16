@@ -6,9 +6,9 @@ import { UniqueIdentifier } from "@dnd-kit/core";
 
 import {
   LinkFieldPreset,
-  LinkFieldPresetBeResources,
-  LinkFieldPresetFeResources,
-  LinkFieldPresetGeneric,
+  LinkFieldPresetSecond,
+  LinkFieldPresetThird,
+  LinkFieldPresetForth,
 } from "@/components/link-field-presets";
 
 interface SortableItemProps {
@@ -19,12 +19,12 @@ const getListComponent = (uid: UniqueIdentifier) => {
   switch (uid) {
     case "list-general":
       return <LinkFieldPreset uid={uid} />;
-    case "list-fe-resources":
-      return <LinkFieldPresetFeResources uid={uid} />;
-    case "list-be-resources":
-      return <LinkFieldPresetBeResources uid={uid} />;
-    case "list-generic":
-      return <LinkFieldPresetGeneric uid={uid} />;
+    case "list-nth-second":
+      return <LinkFieldPresetSecond uid={uid} />;
+    case "list-nth-third":
+      return <LinkFieldPresetThird uid={uid} />;
+    case "list-nth-forth":
+      return <LinkFieldPresetForth uid={uid} />;
     default:
       return null;
   }
